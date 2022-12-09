@@ -14,11 +14,11 @@ public class MergeSort {public static void main(String args[])
 	}
 
    
-	void merge(int mergeArr[], int l, int m, int a)
+	void merge(int mergeArr[], int a, int m, int b)
 	{
 		
-		int n1 = m - l + 1;
-		int n2 = a - m;
+		int n1 = m - a + 1;
+		int n2 = b - m;
 
 		
 		int L[] = new int[n1];
@@ -26,7 +26,7 @@ public class MergeSort {public static void main(String args[])
 
 		
 		for (int i = 0; i < n1; ++i)
-			L[i] = mergeArr[l + i];
+			L[i] = mergeArr[a + i];
 		for (int j = 0; j < n2; ++j)
 			A[j] = mergeArr[m + 1 + j];
 
@@ -35,7 +35,7 @@ public class MergeSort {public static void main(String args[])
 		int i = 0, j = 0;
 
 		
-		int k = l;
+		int k = a;
 		while (i < n1 && j < n2) {
 			if (L[i] <= A[j]) {
 				mergeArr[k] = L[i];
@@ -66,18 +66,18 @@ public class MergeSort {public static void main(String args[])
 	}
 
 	
-	void sort(int sortArray[], int l, int a)
+	void sort(int sortArray[], int l, int b)
 	{
-		if (l < a) {
+		if (l < b) {
 			
-			int m=l + (a - l) / 2;
+			int m=l + (b - l) / 2;
 
 			
 			sort(sortArray, l, m);
-			sort(sortArray, m + 1, a);
+			sort(sortArray, m + 1, b);
 
 			
-			merge(sortArray, l, m, a);
+			merge(sortArray, l, m, b);
 		}
 	}
 
